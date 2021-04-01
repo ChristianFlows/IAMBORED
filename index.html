@@ -1,12 +1,49 @@
+<!--basic html layout for I am bored application-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="stylesheet" href="./assets/stylesheet.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <title>IamBored</title>
 </head>
 <body>
-  
+  <header class="head">
+    <h1>IamBored.</h1>
+  </header>
+
+  <!--Container for search bar -->
+  <div class="searchContainer">
+    <input type="text" name="search" class="text" placeholder="Search..">
+    <a class="btn">
+      <i class="material-icons">search</i>
+    </a>
+  </div>
+
+  <!--main container for events-->
+  <div class="eventsContainer">
+
+    <div class="resturantsContainer">
+      <h3 class="resturants">
+        resturants
+      </h3>
+    </div>
+
+    <div class="mapsContainer">
+      <h3 class="map">
+        google map
+      </h3>
+    </div>
+
+    <div class="hotelsContainer">
+      <h3 class="hotels">
+        hotels
+      </h3>
+    </div>
+  </div>
+
 </body>
 </html>
