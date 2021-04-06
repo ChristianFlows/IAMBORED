@@ -1,5 +1,11 @@
 # Changes made
 
-I made changes to the javascript where when the user searches for the city they reside in, it will bring a random event everytime they hit search.
+The user can now only search by typing in their city in the United States.
 
-Please see slack design if I should change it to the buttons.
+Once search button is clicked a random event will appear. 
+
+They will have two options. Yes they will go, No they will not go. 
+
+If they click no, it will give another random event. 
+
+If they click yes, it will give them the options to buy tickets with the google maps widget. 
