@@ -18,4 +18,4 @@ Bugs:
 
 This is what the home page currently looks like 
 
-![](assets/images/iambored_event.png| width= 100)
+<img src='https://github.com/ChristianFlows/IAMBORED/blob/add-ticketmasterapi/assets/images/iambored_event.png'>
