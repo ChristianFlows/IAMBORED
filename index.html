@@ -1,0 +1,49 @@
+<!--basic html layout for I am bored application-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./assets/stylesheet.css">
+  <!--<link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" >-->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <title>IamBored</title>
+</head>
+<body>
+  <header class="head">
+    <h1>IamBored.</h1>
+  </header>
+
+  <!--Container for search bar -->
+  <div class="searchContainer">
+    <input type="text" name="search" class="text" placeholder="Search..">
+    <a class="btn">
+      <i class="material-icons">search</i>
+    </a>
+  </div>
+
+  <!--main container for events-->
+  <div class="eventsContainer">
+
+    <div class="resturantsContainer" >
+      <h3 class="resturants">
+        Events
+      </h3>
+    </div>
+
+    <div class="mapsContainer" id="map">
+      <h3 class="map">
+        google map
+      </h3>
+    </div>
+
+  </div>
+  
+
+
+<scirpt src="https://maps.googleapis.com/maps/api/js?callback=createMap&key=AIzaSyCaqNuzWZUR6ep6JktBHvyCEfoRqg2K5O0"></scirpt>
+<script src="./assets/script.js"></script>
+</body>
+</html>
