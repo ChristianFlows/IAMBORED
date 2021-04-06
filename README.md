@@ -1,9 +1,5 @@
-# Event API 
+# Changes made
 
-1. still need to add function for random event
-2. coded so it will work with google maps 
-3. may need to change parameters for user to search in their city
+I made changs to the javascript where when the user searches for the city they reside in it will bring a random event everytime they hit search.
 
-ticketmaster discovery API doc : https://developer.ticketmaster.com/products-and-docs/apis/discovery-api/v2/
-
-API Key: Ao7jWEWwZIMXSxV8bGEoSfgA3ot0V3sh
+Please see slack design if I should change it to the buttons.
