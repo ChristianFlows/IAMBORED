@@ -18,3 +18,11 @@ Bugs:
 
 This is what the home page currently looks like 
 
+<img src='https://github.com/ChristianFlows/IAMBORED/blob/add-ticketmasterapi/assets/images/iambored_home.png'>
+
+This is what the home page looks like after the user clicks the search bar 
+
+<img src='https://github.com/ChristianFlows/IAMBORED/blob/add-ticketmasterapi/assets/images/iambored_event.png'>
+
+
+We need to edit more with styling
