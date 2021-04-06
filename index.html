@@ -1,55 +1,48 @@
-<!--basic html layout for I am bored application-->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./assets/stylesheet.css">
+  <link rel="stylesheet" href="./assets/stylesheet3.css">
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" >
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <title>IamBored</title>
 </head>
 <body>
-  <header class="head">
+<header class="head">
     <h1>IamBored.</h1>
   </header>
 
   <!--Container for search bar -->
   <div class="searchContainer">
-    <input type="text" name="search" class="text" placeholder="Search..">
-    <a class="btn">
-      <i class="material-icons">search</i>
-    </a>
+    <form id='userForm'>
+      <input id='userEntry' type="text" name="search" class="text" placeholder="Enter a city..">
+      <button id='submitButton' class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Search</button>
+  </form>
   </div>
 
   <!--main container for events-->
   <div class="eventsContainer">
+    <div class="resturantsContainer" >
+      <h3 class="restaurants">
+        Events</h3>
+       <div id="eventList">
 
-    <div class="resturantsContainer">
-      <h3 class="resturants">
-        resturants
-      </h3>
+       </div>
     </div>
 
-    <div class="mapsContainer">
+    <div class="mapsContainer" id="map">
       <h3 class="map">
+  		<div id="result">
         google map
+  		</div>
       </h3>
-     <iframe
-      width="450"
-      height="250"
-      frameborder="0" style="border:0"
-      src="https://www.google.com/maps/embed/v1/MAP_MODE?key=AIzaSyA3_evQJhPJ4tmHpozf_Q1eqxhjLmTdTiE&PARAMETERS" allowfullscreen>
-</iframe>
     </div>
 
-    <div class="hotelsContainer">
-      <h3 class="hotels">
-        hotels
-      </h3>
-    </div>
   </div>
-
+  <script src="./assets/js/script.js"></script>
+  <div id="result2">
+  </div>
 </body>
 </html>
