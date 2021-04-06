@@ -6,7 +6,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/assets/stylesheet.css">
+  <link rel="stylesheet" href="./assets/stylesheet.css">
   <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" >
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <title>IamBored</title>
@@ -17,30 +17,31 @@
   </header>
 
   <!--Container for search bar -->
-  <div class="searchContainer">
-    <form id='userForm'>
+  
+    <form id='userForm'  class="searchContainer">
       <input id='userEntry' type="text" name="search" class="text" placeholder="Enter a city..">
+      <br><br><br>
       <button id='submitButton' class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Search</button>
-  </form>
-  </div>
+    </form>
+  
 
   <!--main container for events-->
   <div class="eventsContainer">
     <div class="resturantsContainer" >
       <h3 class="resturants">
         Events</h3>
-       <div id="eventList">
+       <div id="eventList" style='color:white'>
 
        </div>
     </div>
 
-    <div class="mapsContainer" id="map">
+    <!--<div class="mapsContainer" id="map">
       <h3 class="map">
         google map
       </h3>
     </div>
 
-  </div>
+  </div>-->
   
 <script src="./assets/js/script.js"></script>
 </body>

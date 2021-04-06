@@ -106,6 +106,12 @@ body {
 
 }
 
+/*this is the design for the error comment, please change this to look better */
+.errorBox
+{
+    color: white;
+
+}
 
 
 

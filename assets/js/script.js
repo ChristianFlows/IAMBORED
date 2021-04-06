@@ -8,6 +8,7 @@ var eventList =document.querySelector('#eventList');
 
 var eventLocator = function(userEntry) {
     // changed to so that user can only enter a city 
+    //we can change this so the user enters a city and a state
     var apiUrl = 'https://app.ticketmaster.com/discovery/v2/events.json?city='+ userEntry +'&size=100&apikey=Ao7jWEWwZIMXSxV8bGEoSfgA3ot0V3sh';
 
     fetch(apiUrl).then(function(eventResponse){
@@ -16,16 +17,28 @@ var eventLocator = function(userEntry) {
         })
         .then(function(eventResponse)
         {
-            displayEvents(eventResponse);
+            //this is to check if the user entered a city in the US 
+            if(eventResponse.page.totalElements > 0)
+            {
+                displayEvents(eventResponse);
+                
+            }
+            else if(eventResponse.page.totalElements === 0)
+            {
+                //this is the function that will display the error message if user enters something other than a city in the United States 
+                errorFunc(eventResponse);
+            }
 
             console.log(eventResponse);
             var lat = eventResponse._embedded.events[0]._embedded.venues[0].location.latitude;
             var lon = eventResponse._embedded.events[0]._embedded.venues[0].location.longitude;
             console.log('for google --->latitude:'+ lat + ' longitude:' + lon);
-
+            //this is for the google map fetch, we can also use ticketmaster to bring up a map instead
+            //what would you guys like to do?
             return 'https://www.google.com/maps/embed/v1/view?key=AIzaSyA3_evQJhPJ4tmHpozf_Q1eqxhjLmTdTiE&center='+ lat +','+ lon + '&zoom=18&maptype=satellite';
         })
         /*
+        //this is if we are using the nested API thing to bring up google maps 
         .then(function(mapResponse){
             return mapResponse.json();
         })
@@ -52,7 +65,7 @@ var formSubmitHandler = function(ev)
     if(userInput)
     { eventLocator(userInput);}
     else{
-        alert('Please input a city!!');
+        errorFunc(userInput);
     }
 
     clearForm();
@@ -156,4 +169,12 @@ function noFunc(eventData)
          yesFunc();
          noFunc(eventData);
      })
+}
+
+function errorFunc()
+{
+    //this is can be decorated with CSS tailwind with however you like
+    //I just did this for now 
+    eventList.setAttribute('class', 'errorBox');
+    eventList.innerHTML = 'Please enter a city in the United States';
 }
