@@ -15,3 +15,6 @@ Bugs:
 
 1. does not display a 404 error message if someone types something other than a city 
 2. should we put the disclaimer that it only searches cities in the United States, should we take a parameter for state along with it?
+
+This is what the home page currently looks like 
+
