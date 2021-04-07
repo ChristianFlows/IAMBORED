@@ -1,11 +1,11 @@
 
 
-
 var userForm = document.querySelector('#userForm');
 var userEntry = document.querySelector('#userEntry');
 var submitButton = document.querySelector('#submit-button');
 var userSearchTerm = document.querySelector('#userSearchTerm');
 var eventList =document.querySelector('#eventList');
+
 
 function getIframe(lat, lon) {
 	var url = 'https://www.google.com/maps/embed/v1/view?key=AIzaSyA3_evQJhPJ4tmHpozf_Q1eqxhjLmTdTiE&center='+lat+','+lon+'&zoom=18&maptype=satellite';
@@ -14,7 +14,12 @@ function getIframe(lat, lon) {
     result.innerHTML = '<iframe id="event_iframe" title="iframe" width="300" height="200" src="'+url+'"></iframe>';
 }
 var eventLocator = function(userEntry) {
-    // changed to so that user can only enter a city
+    // changed so that user can only enter a city
+
+var eventLocator = function(userEntry) {
+    // changed to so that user can only enter a city 
+    //we can change this so the user enters a city and a state
+
     var apiUrl = 'https://app.ticketmaster.com/discovery/v2/events.json?city='+ userEntry +'&size=100&apikey=Ao7jWEWwZIMXSxV8bGEoSfgA3ot0V3sh';
 
     fetch(apiUrl).then(function(eventResponse){
@@ -23,33 +28,36 @@ var eventLocator = function(userEntry) {
         })
         .then(function(eventResponse)
         {
-            displayEvents(eventResponse);
+            //this is to check if the user entered a city in the US 
+            if(eventResponse.page.totalElements > 0)
+            {
+                displayEvents(eventResponse);
+                
+            }
+            else if(eventResponse.page.totalElements === 0)
+            {
+                //this is the function that will display the error message if user enters something other than a city in the United States 
+                errorFunc(eventResponse);
+            }
+
 
             console.log(eventResponse);
             var lat = eventResponse._embedded.events[0]._embedded.venues[0].location.latitude;
             var lon = eventResponse._embedded.events[0]._embedded.venues[0].location.longitude;
             console.log('for google --->latitude:'+ lat + ' longitude:' + lon);
+
 			getIframe(lat, lon);
             return 'https://www.google.com/maps/embed/v1/view?key=AIzaSyA3_evQJhPJ4tmHpozf_Q1eqxhjLmTdTiE&center='+ lat +','+ lon + '&zoom=18&maptype=satellite';
         })
-        /*
-        .then(function(mapResponse){
-            return mapResponse.json();
-        })
-        .then(function(mapResponse){
-            //need something here to see it on the webpage
-        })*/
-
-
+     
     }
 
 
 
-
-var formSubmitHandler = function(ev)
+var formSubmitHandler = function(ev) 
 {
     ev.preventDefault();
-
+    
     var userEntry = ev.target.elements['userEntry'].value
     var userInput = userEntry.trim();
 
@@ -57,7 +65,7 @@ var formSubmitHandler = function(ev)
     if(userInput)
     { eventLocator(userInput);}
     else{
-        alert('Please input a city!!');
+        errorFunc(userInput);
     }
 
     clearForm();
@@ -66,7 +74,9 @@ var formSubmitHandler = function(ev)
 }
 userForm.addEventListener('submit', formSubmitHandler);
 
-var displayEvents = function(eventData)
+  
+var displayEvents = function(eventData) 
+
 {
 
     //removes search when right info is entered
@@ -84,7 +94,8 @@ function eventInfo(eventData)
 {
      //api tm info start
      var random = Math.floor(Math.random()* eventData._embedded.events.length);
-     //empty array to store the object
+     //empty array to store the object 
+
     var eventObj = {
       eventImage: '<img src="'+ eventData._embedded.events[random].images[0].url + '"/><br>',
         eventName: eventData._embedded.events[random].name,
@@ -95,7 +106,9 @@ function eventInfo(eventData)
      //adding variable to display
      }
      var eventInfo = eventObj.eventImage + eventObj.eventName + eventObj.eventLoc+ eventObj.eventAddress + eventObj.eventDate;
-     //api tm end
+
+     //api tm end 
+
      //adding to html element #eventList
     eventList.innerHTML = eventInfo;
 
@@ -124,12 +137,12 @@ function createButtons()
      noBtn.setAttribute('class', 'inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500');
      //appending it to event id html element
      eventList.append(yesBtn);
-     eventList.append(noBtn);
+     eventList.append(noBtn); 
 
 }
 
+//This is the function for if the the user likes the event 
 
-//This is the function for if the the user likes the event
 function yesFunc()
 {
 
@@ -161,5 +174,14 @@ function noFunc(eventData)
          yesFunc();
          noFunc(eventData);
      })
+}
+
+
+function errorFunc()
+{
+    //this is can be decorated with CSS tailwind with however you like
+    //I just did this for now 
+    eventList.setAttribute('class', 'errorBox');
+    eventList.innerHTML = 'Please enter a city in the United States';
 }
 
