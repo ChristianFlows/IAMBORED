@@ -6,50 +6,55 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="stylesheet.css">
+  <link rel="stylesheet" href="./assets/stylesheet.css">
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" >
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <title>IamBored</title>
 </head>
 <body>
-  <header class="head">
-    <h1>IamBored.</h1>
+  <header class="head justify-center">
+    <h1 class="inline-block transition duration-1000 ease-in-out transform hover:scale-150 ">I
+    </h1>
+    <h1 class="inline-block transition duration-1000 ease-in-out transform hover:scale-150 ">am
+    </h1>
+    <h1 class="inline-block transition duration-1000 ease-in-out transform hover:rotate-180">bored
+    </h1>
   </header>
 
-  <!--Container for search bar -->
-  <div class="searchContainer">
-    <input type="text" name="search" class="text" placeholder="Search..">
-    <a class="btn">
-      <i class="material-icons">search</i>
-    </a>
+  
+  <!--Container for search bar-->
+  <div class="flex justify-center my-24 ">
+    <form id='userForm' class="flex border border-gray-200 rounded-full p-4 outline-none ">
+      <input id='userEntry' type="text" name="search" class="w-full outline-none bg-transparent" placeholder="Enter a city..">
+    <button id='submitButton'
+        class="material-icons outline-none transition duration-500 ease-in-out transform hover:scale-150">search</i>
+    </button>
+    </form>
   </div>
 
-  <!--main container for events-->
-  <div class="eventsContainer">
+  <div class="flex flex-wrap -mx-2 mb-8">
 
-    <div class="resturantsContainer">
-      <h3 class="resturants">
-        resturants
-      </h3>
+   <div class="w-1/2 lg:w-1/2 px-2">
+        <div class="relative pb-2/3 ml-16">
+          <p class="absolute h-full w-full object-cover" id="eventList">
+            </p>
+        </div>
     </div>
 
-    <div class="mapsContainer">
-      <h3 class="map">
-        google map
-      </h3>
-     <iframe
-      width="450"
-      height="250"
-      frameborder="0" style="border:0"
-      src="https://www.google.com/maps/embed/v1/MAP_MODE?key=AIzaSyA3_evQJhPJ4tmHpozf_Q1eqxhjLmTdTiE&PARAMETERS" allowfullscreen>
-</iframe>
-    </div>
+    
 
-    <div class="hotelsContainer">
-      <h3 class="hotels">
-        hotels
-      </h3>
-    </div>
+  <div class="w-1/2 lg:w-1/2 px-2" id="result">
+      <div class="relative pb-2/3 ml-8">
+        <!--the map gets put here, will work on adding more interactive features-->
+        <!--if someone could work to resize that wiil be awesome!!!-->
+        <p class="absolute h-full w-full object-cover" id="map">
+          </p>
+        </div>
+      </div>
+
   </div>
-
+ 
+  
+<script src="./assets/js/script.js"></script>
 </body>
 </html>
