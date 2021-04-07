@@ -1,48 +1,56 @@
+<!--basic html layout for I am bored application-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!--<link rel="stylesheet" href="./assets/css/testingcss.css">-->
+  <link rel="stylesheet" href="/assets/stylesheet.css">
   <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" >
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <title>IamBored</title>
 </head>
 <body>
-<header class="head">
-    <h1>IamBored.</h1>
+  <header class="head justify-center">
+    <h1 class="inline-block transition duration-1000 ease-in-out transform hover:scale-150 ">I
+    </h1>
+    <h1 class="inline-block transition duration-1000 ease-in-out transform hover:scale-150 ">am
+    </h1>
+    <h1 class="inline-block transition duration-1000 ease-in-out transform hover:rotate-180">bored
+    </h1>
   </header>
 
+  
   <!--Container for search bar -->
-  <div class="searchContainer">
-    <form id='userForm'>
-      <input id='userEntry' type="text" name="search" class="text" placeholder="Enter a city..">
-      <button id='submitButton' class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Search</button>
-  </form>
+  <div class="flex justify-center my-24 ">
+    <form id='userForm' class="flex border border-gray-200 rounded-full p-4 outline-none ">
+      <input id='userEntry' type="text" name="search" class="w-full outline-none bg-transparent" placeholder="Enter a city..">
+    <button id='submitButton'
+        class="material-icons outline-none transition duration-500 ease-in-out transform hover:scale-150">search</i>
+    </button>
+    </form>
   </div>
 
-  <!--main container for events-->
-  <div class="eventsContainer">
-    <div class="resturantsContainer" >
-      <h3 class="restaurants">
-        Events</h3>
-       <div id="eventList">
+  <div class="flex flex-wrap -mx-2 mb-8">
 
-       </div>
+    <div class="w-1/2 lg:w-1/2 px-2">
+        <div class="relative pb-2/3 ml-16">
+          <p class="absolute h-full w-full object-cover" id="eventList">
+            </p>
+        </div>
     </div>
 
-    <div class="mapsContainer" id="map">
-      <h3 class="map">
-  		<div id="result">
-        google map
-  		</div>
-      </h3>
-    </div>
+    <div class="w-1/2 lg:w-1/2 px-2" id="result">
+      <div class="relative pb-2/3 ml-8">
+        <p class="absolute h-full w-full object-cover" id="map">
+          </p>
+        </div>
+      </div>
 
   </div>
-  <script src="./assets/js/testing.js"></script>
-  <div id="result2">
-  </div>
+
+  
+<script src="./assets/script.js"></script>
 </body>
-</html> 
+</html>
