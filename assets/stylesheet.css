@@ -105,6 +105,14 @@ body {
     margin-top: 20px;
 
 }
+/*This is to set the height and width of the google maps API*/
+
+#map
+{
+    height: 500px;
+    width: 500px;
+}
+
 
 /*this is the design for the error comment, please change this to look better */
 .errorBox

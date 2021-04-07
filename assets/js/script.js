@@ -61,20 +61,6 @@ var formSubmitHandler = function(ev)
 userForm.addEventListener('submit', formSubmitHandler);
 
 
-
-/*
-function getIframe(lat, lon) {
-    console.log('working');
-	var url = 'https://www.google.com/maps/embed/v1/view?key=AIzaSyA3_evQJhPJ4tmHpozf_Q1eqxhjLmTdTiE&center='+lat+','+lon+'&zoom=18&maptype=satellite';
-	var result = document.getElementById("result");
-
-    result.innerHTML = '<iframe id="event_iframe" title="iframe" width="450" height="300" src="'+url+'"></iframe>';
-	result.setAttribute('class', 'border border-gray-200 rounded-full p-4 outline-none');
-
-}*/
-
-
-
 var randomEvent = function(eventData)
 {
     var random = Math.floor(Math.random()* eventData._embedded.events.length);
@@ -159,21 +145,12 @@ function yesFunc()
           console.log('Event called again:');
           console.log(eventObj);
           eventList.innerHTML = eventObj.eventImage + eventObj.eventName + eventObj.eventLoc + eventObj.eventAddress + eventObj.eventDate + eventObj.buyTickets;
-          var lat = eventObj.lat;
-          var lon = eventObj.lon;
-        
-
-          //created elements to add map when user clicks yes 
-            var mapDisplay = document.createElement("IFRAME");
-            mapDisplay.setAttribute('src', 'https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d12182.30520634488!2d' +lon + '!3d' + lat + '!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1561060983193!5m2!1sen!2sus');
-            var map = document.getElementById("map");
-        //
-
-            map.appendChild(mapDisplay);
-
+          var lat = JSON.parse(eventObj.lat);
+          var lon = JSON.parse(eventObj.lon);
 
       })
 }
+
 
 //this function is if the user does not like the event
 
