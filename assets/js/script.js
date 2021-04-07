@@ -41,10 +41,10 @@ var eventLocator = function(userEntry) {
             }
 
 
-            console.log(eventResponse);
+            /*console.log(eventResponse);
             var lat = eventResponse._embedded.events[0]._embedded.venues[0].location.latitude;
             var lon = eventResponse._embedded.events[0]._embedded.venues[0].location.longitude;
-            console.log('for google --->latitude:'+ lat + ' longitude:' + lon);
+            console.log('for google --->latitude:'+ lat + ' longitude:' + lon);*/
 
 			getIframe(lat, lon);
             return 'https://www.google.com/maps/embed/v1/view?key=AIzaSyA3_evQJhPJ4tmHpozf_Q1eqxhjLmTdTiE&center='+ lat +','+ lon + '&zoom=18&maptype=satellite';
@@ -61,12 +61,7 @@ var formSubmitHandler = function(ev)
     var userEntry = ev.target.elements['userEntry'].value
     var userInput = userEntry.trim();
 
-    //if they enter something other than a city, it needs to display a 404 , this does not work need to fix this
-    /*if(userInput)
-    { eventLocator(userInput);}
-    else{
-        errorFunc(userInput);
-    }*/
+
 	if(userInput)
     { eventLocator(userInput);}
     else{
@@ -107,7 +102,9 @@ function eventInfo(eventData)
         eventLoc: '<br>Location: ' + eventData._embedded.events[random]._embedded.venues[0].name,
         eventAddress: ', '+ eventData._embedded.events[random]._embedded.venues[0].address.line1 + ' ' + eventData._embedded.events[random]._embedded.venues[0].city.name + ' ' + eventData._embedded.events[random]._embedded.venues[0].state.stateCode,
         eventDate: '<br>Date: '+ eventData._embedded.events[random].dates.start.localDate + '<br>',
-        buyTickets: '<br>Buy tickets here: <a href="'+eventData._embedded.events[random].url+'">' + eventData._embedded.events[random].url + '</a>'
+        buyTickets: '<br>Buy tickets here: <a href="'+eventData._embedded.events[random].url+'">' + eventData._embedded.events[random].url + '</a>',
+        lon: eventData._embedded.events[random]._embedded.venues[0].location.longitude,
+        lat: eventData._embedded.events[random]._embedded.venues[0].location.latitude
      //adding variable to display
      }
      var eventInfo = eventObj.eventImage + eventObj.eventName + eventObj.eventLoc+ eventObj.eventAddress + eventObj.eventDate;
