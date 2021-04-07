@@ -145,12 +145,23 @@ function yesFunc()
           console.log('Event called again:');
           console.log(eventObj);
           eventList.innerHTML = eventObj.eventImage + eventObj.eventName + eventObj.eventLoc + eventObj.eventAddress + eventObj.eventDate + eventObj.buyTickets;
-          var lat = JSON.parse(eventObj.lat);
-          var lon = JSON.parse(eventObj.lon);
+          var lat = eventObj.lat;
+          var lon = eventObj.lon;
+       
+        getIframe(lat,lon);
 
       })
 }
 
+//INAWISE MAP ADDED ON I WILL GO BUTTON
+
+function getIframe(lat, lon) {
+    //console.log('working');
+	var url = 'https://www.google.com/maps/embed/v1/view?key=AIzaSyA3_evQJhPJ4tmHpozf_Q1eqxhjLmTdTiE&center='+lat+','+lon+'&zoom=18&maptype=satellite';
+	var result = document.getElementById("result");
+    result.innerHTML = '<iframe id="event_iframe" title="iframe" width="450" height="300" src="'+url+'"></iframe>';
+	result.setAttribute('class', 'border border-gray-200 rounded-full p-4 outline-none');
+}
 
 //this function is if the user does not like the event
 
@@ -174,3 +185,4 @@ function errorFunc()
     eventList.setAttribute('class', 'errorBox');
     eventList.innerHTML = 'Please enter a city in the United States';
 }
+
