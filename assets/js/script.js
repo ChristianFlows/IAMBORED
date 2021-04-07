@@ -176,3 +176,11 @@ function noFunc(eventData)
      })
 }
 
+
+function errorFunc()
+{
+    //this is can be decorated with CSS tailwind with however you like
+    //I just did this for now 
+    eventList.setAttribute('class', 'errorBox');
+    eventList.innerHTML = 'Please enter a city in the United States';
+}
