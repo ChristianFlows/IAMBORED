@@ -15,6 +15,8 @@ Bugs:
 
 1. does not display a 404 error message if someone types something other than a city 
 2. should we put the disclaimer that it only searches cities in the United States, should we take a parameter for state along with it?
+3. map does not have a red arrow indicating the exact location
+4. two white boxes are present in search, lets make it so it appears while the map appears 
 
 This is what the home page currently looks like 
 
