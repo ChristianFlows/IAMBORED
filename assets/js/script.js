@@ -184,6 +184,7 @@ function noFunc(eventData)
      {
          eventList.innerHTML = ' ';
          randomEvent(eventData);
+
          noFunc(eventData);
      })
 }
