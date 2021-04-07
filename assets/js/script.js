@@ -156,7 +156,7 @@ function yesFunc()
 //INAWISE MAP ADDED ON I WILL GO BUTTON
 
 function getIframe(lat, lon) {
-    //console.log('working');
+    console.log(lat,lon);
 	var url = 'https://www.google.com/maps/embed/v1/view?key=AIzaSyA3_evQJhPJ4tmHpozf_Q1eqxhjLmTdTiE&center='+lat+','+lon+'&zoom=18&maptype=satellite';
 	var result = document.getElementById("result");
     result.innerHTML = '<iframe id="event_iframe" title="iframe" width="450" height="300" src="'+url+'"></iframe>';
