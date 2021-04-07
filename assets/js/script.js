@@ -13,8 +13,6 @@ function getIframe(lat, lon) {
 
     result.innerHTML = '<iframe id="event_iframe" title="iframe" width="300" height="200" src="'+url+'"></iframe>';
 }
-var eventLocator = function(userEntry) {
-    // changed so that user can only enter a city
 
 var eventLocator = function(userEntry) {
     // changed to so that user can only enter a city 
@@ -61,11 +59,16 @@ var formSubmitHandler = function(ev)
     var userEntry = ev.target.elements['userEntry'].value
     var userInput = userEntry.trim();
 
-    //if they enter something other than a city, it needs to display a 404 message
-    if(userInput)
+    //if they enter something other than a city, it needs to display a 404 , this does not work need to fix this
+    /*if(userInput)
     { eventLocator(userInput);}
     else{
         errorFunc(userInput);
+    }*/
+	if(userInput)
+    { eventLocator(userInput);}
+    else{
+        alert('Please input a city!!');
     }
 
     clearForm();
@@ -161,8 +164,8 @@ function yesFunc()
       })
 }
 
+//this function is if the user does not like the event
 
-//this is the function if the user does not like the event
 function noFunc(eventData)
 {
     var no = document.getElementById('no');
@@ -174,14 +177,5 @@ function noFunc(eventData)
          yesFunc();
          noFunc(eventData);
      })
-}
-
-
-function errorFunc()
-{
-    //this is can be decorated with CSS tailwind with however you like
-    //I just did this for now 
-    eventList.setAttribute('class', 'errorBox');
-    eventList.innerHTML = 'Please enter a city in the United States';
 }
 
