@@ -11,7 +11,9 @@ function getIframe(lat, lon) {
 	var url = 'https://www.google.com/maps/embed/v1/view?key=AIzaSyA3_evQJhPJ4tmHpozf_Q1eqxhjLmTdTiE&center='+lat+','+lon+'&zoom=18&maptype=satellite';
 	var result = document.getElementById("result");
 
-    result.innerHTML = '<iframe id="event_iframe" title="iframe" width="300" height="200" src="'+url+'"></iframe>';
+    result.innerHTML = '<iframe id="event_iframe" title="iframe" width="450" height="300" src="'+url+'"></iframe>';
+	result.setAttribute('class', 'border border-gray-200 rounded-full p-4 outline-none');
+
 }
 
 var eventLocator = function(userEntry) {
@@ -141,6 +143,7 @@ function createButtons()
      //appending it to event id html element
      eventList.append(yesBtn);
      eventList.append(noBtn); 
+	eventList.setAttribute('class', 'border border-gray-200 rounded-full p-4 outline-none');
 
 }
 
