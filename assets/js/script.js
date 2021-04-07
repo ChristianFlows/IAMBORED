@@ -158,9 +158,6 @@ function yesFunc()
           console.log(eventObj);
           eventList.innerHTML = eventObj.eventImage + eventObj.eventName + eventObj.eventLoc + eventObj.eventAddress + eventObj.eventDate + eventObj.buyTickets;
 
-          var map = document.getElementById('mapThing');
-          map.innerHTML = '<br><br><span> Google Map Here </span>';
-          eventList.append(map);
       })
 }
 
