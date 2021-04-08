@@ -2,6 +2,10 @@
 
 IAMBORED is an application that randomly chooses an event for you.
 
+Deployed Page: https://christianflows.github.io/IAMBORED/
+
+Github Repo: https://github.com/ChristianFlows/IAMBORED
+
 Project Roles:
 
 Christian: Wireframe, TailWind CSS, Javascript Issues and Merging
