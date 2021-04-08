@@ -8,10 +8,9 @@ var eventList =document.querySelector('#eventList');
 
 
 
-var eventLocator = function(userEntry) {
-    // changed to so that user can only enter a city 
-
-    var apiUrl = 'https://app.ticketmaster.com/discovery/v2/events.json?city='+ userEntry +'&size=100&apikey=Ao7jWEWwZIMXSxV8bGEoSfgA3ot0V3sh';
+var eventLocator = function(userCity, userState) {
+    //cpagan-->user will be able to enter city and state only in the usa
+    var apiUrl = 'https://app.ticketmaster.com/discovery/v2/events.json?city='+ userCity +'&stateCode='+ userState +'&size=100&apikey=Ao7jWEWwZIMXSxV8bGEoSfgA3ot0V3sh';
 
     fetch(apiUrl).then(function(eventResponse){
             return eventResponse.json();
@@ -19,18 +18,18 @@ var eventLocator = function(userEntry) {
         })
         .then(function(eventResponse)
         {
-            //this is to check if the user entered a city in the US 
+            //cpagan-->this is to check if the user entered a city in the US 
             if(eventResponse.page.totalElements > 0)
             {
-    
-                randomEvent(eventResponse);
+                //cpagan-->random number picked for TM api array
+                //randomEvent(eventResponse);
                 console.log(eventResponse);
 
             }
             else if(eventResponse.page.totalElements === 0)
             {
-                //this is the function that will display the error message if user enters something other than a city in the United States 
-                errorFunc(eventResponse);
+                //cpagan--> modal will pop up if user enters wrong information
+                console.log('no results');
             }
 
         })
@@ -43,18 +42,17 @@ var eventLocator = function(userEntry) {
 var formSubmitHandler = function(ev) 
 {
     ev.preventDefault();
+    //cpagan->this is for the autofill functions used with google maps
+    var userEntry = ev.target.elements['userEntry'].value;
+    var userEntry = userEntry.split(',');
+    var userCity = userEntry[0];
+    var userState = userEntry[1];
     
-    var userEntry = ev.target.elements['userEntry'].value
-    var userInput = userEntry.trim();
-
-    
-	if(userInput)
-    { eventLocator(userInput);}
-    else{
-        alert('Please input a city!!');
+    if(userCity, userState){
+    eventLocator(userCity, userState);
     }
 
-    clearForm();
+    /*clearForm();*/
 
 
 }
@@ -177,12 +175,4 @@ function noFunc(eventData)
      })
 }
 
-
-function errorFunc()
-{
-    //this is can be decorated with CSS tailwind with however you like
-    //I just did this for now 
-    eventList.setAttribute('class', 'errorBox');
-    eventList.innerHTML = 'Please enter a city in the United States';
-}
 
