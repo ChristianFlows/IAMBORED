@@ -17,7 +17,28 @@
 body {
     margin: 0;
     padding: 0;
-    background: #2c666e
+    background: linear-gradient(323deg, #07393c, #2c666e, #90ddf0);
+    background-size: 600% 600%;
+
+    -webkit-animation: animatedBackgroundGradient 30s ease infinite;
+    -moz-animation: animatedBackgroundGradient 30s ease infinite;
+    animation: animatedBackgroundGradient 30s ease infinite;
+}
+
+@-webkit-keyframes animatedBackgroundGradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes animatedBackgroundGradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes animatedBackgroundGradient {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
 }
 
 .searchContainer {
