@@ -103,5 +103,23 @@ body {
 }
 
 
+/* modal css please change with tailwind*/
+
+.modal
+{
+    background-color: #07393c;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+#modalP
+{
+    background-color: #f0edee;
+    padding: 40px;
+    width:100%;
+    margin: 0 auto;
+}
 
 

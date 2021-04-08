@@ -22,15 +22,16 @@ var eventLocator = function(userCity, userState) {
             if(eventResponse.page.totalElements > 0)
             {
                 //cpagan-->random number picked for TM api array
-                //randomEvent(eventResponse);
+                randomEvent(eventResponse);
                 console.log(eventResponse);
 
             }
             else if(eventResponse.page.totalElements === 0)
             {
                 //cpagan--> modal will pop up if user enters wrong information
-                console.log('no results');
+                noResults(eventResponse);
             }
+
 
         })
     
@@ -38,7 +39,7 @@ var eventLocator = function(userCity, userState) {
     }
 
 
-
+//cpagan--> after user inputs in search it will run here
 var formSubmitHandler = function(ev) 
 {
     ev.preventDefault();
@@ -51,13 +52,38 @@ var formSubmitHandler = function(ev)
     if(userCity, userState){
     eventLocator(userCity, userState);
     }
+    else {
+        noResults();
+    }
 
-    /*clearForm();*/
+    clearForm();
 
 
 }
 userForm.addEventListener('submit', formSubmitHandler);
 
+
+//cpagan--> error modal pops up if there are no results for their search
+function noResults() {
+
+    var modal = document.createElement('div');
+    modal.setAttribute('class', 'modal');
+
+    var modalContent = document.createElement('div');
+
+    var modalP = document.createElement('p');
+    modalP.setAttribute('id','modalP');
+    modalP.textContent = 'No Results. Try Again';
+
+    modal.appendChild(modalContent);
+    modalContent.appendChild(modalP);
+    document.body.appendChild(modal);
+
+    document.onclick = function(){
+        modal.remove();
+    }
+
+}
 
 var randomEvent = function(eventData)
 {
@@ -151,16 +177,6 @@ function yesFunc()
       })
 }
 
-//INAWISE MAP ADDED ON I WILL GO BUTTON
-
-function getIframe(lat, lon) {
-    console.log(lat,lon);
-	var url = 'https://www.google.com/maps/embed/v1/view?key=AIzaSyA3_evQJhPJ4tmHpozf_Q1eqxhjLmTdTiE&center='+lat+','+lon+'&zoom=18&maptype=satellite';
-	var result = document.getElementById("result");
-    result.innerHTML = '<iframe id="event_iframe" title="iframe" width="450" height="300" src="'+url+'"></iframe>';
-	result.setAttribute('class', 'border border-gray-200 rounded-full p-4 outline-none');
-}
-
 //this function is if the user does not like the event
 
 function noFunc(eventData)
@@ -174,5 +190,17 @@ function noFunc(eventData)
          noFunc(eventData);
      })
 }
+
+//INAWISE MAP ADDED ON I WILL GO BUTTON
+
+function getIframe(lat, lon) {
+    console.log(lat,lon);
+	var url = 'https://www.google.com/maps/embed/v1/view?key=AIzaSyA3_evQJhPJ4tmHpozf_Q1eqxhjLmTdTiE&center='+lat+','+lon+'&zoom=18&maptype=satellite';
+	var result = document.getElementById("result");
+    result.innerHTML = '<iframe id="event_iframe" title="iframe" width="450" height="300" src="'+url+'"></iframe>';
+	result.setAttribute('class', 'border border-gray-200 rounded-full p-4 outline-none');
+}
+
+
 
 
