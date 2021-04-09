@@ -8,10 +8,9 @@ var eventList =document.querySelector('#eventList');
 
 
 
-var eventLocator = function(userEntry) {
-    // changed to so that user can only enter a city 
-
-    var apiUrl = 'https://app.ticketmaster.com/discovery/v2/events.json?city='+ userEntry +'&size=100&apikey=Ao7jWEWwZIMXSxV8bGEoSfgA3ot0V3sh';
+var eventLocator = function(userCity, userState) {
+    //cpagan-->user will be able to enter city and state only in the usa
+    var apiUrl = 'https://app.ticketmaster.com/discovery/v2/events.json?city='+ userCity +'&stateCode='+ userState +'&size=100&apikey=Ao7jWEWwZIMXSxV8bGEoSfgA3ot0V3sh';
 
     fetch(apiUrl).then(function(eventResponse){
             return eventResponse.json();
@@ -19,19 +18,20 @@ var eventLocator = function(userEntry) {
         })
         .then(function(eventResponse)
         {
-            //this is to check if the user entered a city in the US 
+            //cpagan-->this is to check if the user entered a city in the US 
             if(eventResponse.page.totalElements > 0)
             {
-    
+                //cpagan-->random number picked for TM api array
                 randomEvent(eventResponse);
                 console.log(eventResponse);
 
             }
             else if(eventResponse.page.totalElements === 0)
             {
-                //this is the function that will display the error message if user enters something other than a city in the United States 
-                errorFunc(eventResponse);
+                //cpagan--> modal will pop up if user enters wrong information
+                noResults(eventResponse);
             }
+
 
         })
     
@@ -39,19 +39,21 @@ var eventLocator = function(userEntry) {
     }
 
 
-
+//cpagan--> after user inputs in search it will run here
 var formSubmitHandler = function(ev) 
 {
     ev.preventDefault();
+    //cpagan->this is for the autofill functions used with google maps
+    var userEntry = ev.target.elements['userEntry'].value;
+    var userEntry = userEntry.split(',');
+    var userCity = userEntry[0];
+    var userState = userEntry[1];
     
-    var userEntry = ev.target.elements['userEntry'].value
-    var userInput = userEntry.trim();
-
-    
-	if(userInput)
-    { eventLocator(userInput);}
-    else{
-        alert('Please input a city!!');
+    if(userCity, userState){
+    eventLocator(userCity, userState);
+    }
+    else {
+        noResults();
     }
 
     clearForm();
@@ -60,6 +62,28 @@ var formSubmitHandler = function(ev)
 }
 userForm.addEventListener('submit', formSubmitHandler);
 
+
+//cpagan--> error modal pops up if there are no results for their search
+function noResults() {
+
+    var modal = document.createElement('div');
+    modal.setAttribute('class', 'modal');
+
+    var modalContent = document.createElement('div');
+
+    var modalP = document.createElement('p');
+    modalP.setAttribute('id','modalP');
+    modalP.textContent = 'No Results. Try Again';
+
+    modal.appendChild(modalContent);
+    modalContent.appendChild(modalP);
+    document.body.appendChild(modal);
+
+    document.onclick = function(){
+        modal.remove();
+    }
+
+}
 
 var randomEvent = function(eventData)
 {
@@ -153,16 +177,6 @@ function yesFunc()
       })
 }
 
-//INAWISE MAP ADDED ON I WILL GO BUTTON
-
-function getIframe(lat, lon) {
-    console.log(lat,lon);
-	var url = 'https://www.google.com/maps/embed/v1/view?key=AIzaSyA3_evQJhPJ4tmHpozf_Q1eqxhjLmTdTiE&center='+lat+','+lon+'&zoom=18&maptype=satellite';
-	var result = document.getElementById("result");
-    result.innerHTML = '<iframe id="event_iframe" title="iframe" width="450" height="300" src="'+url+'"></iframe>';
-	result.setAttribute('class', 'border border-gray-200 rounded-full p-4 outline-none');
-}
-
 //this function is if the user does not like the event
 
 function noFunc(eventData)
@@ -177,12 +191,16 @@ function noFunc(eventData)
      })
 }
 
+//INAWISE MAP ADDED ON I WILL GO BUTTON
 
-function errorFunc()
-{
-    //this is can be decorated with CSS tailwind with however you like
-    //I just did this for now 
-    eventList.setAttribute('class', 'errorBox');
-    eventList.innerHTML = 'Please enter a city in the United States';
+function getIframe(lat, lon) {
+    console.log(lat,lon);
+	var url = 'https://www.google.com/maps/embed/v1/view?key=AIzaSyA3_evQJhPJ4tmHpozf_Q1eqxhjLmTdTiE&center='+lat+','+lon+'&zoom=18&maptype=satellite';
+	var result = document.getElementById("result");
+    result.innerHTML = '<iframe id="event_iframe" title="iframe" width="450" height="300" src="'+url+'"></iframe>';
+	result.setAttribute('class', 'border border-gray-200 rounded-full p-4 outline-none');
 }
+
+
+
 

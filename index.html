@@ -6,8 +6,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="stylesheet.css">
-
+  <link rel="stylesheet" href="./assets/css/stylesheet.css">
   <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" >
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <title>IamBored</title>
@@ -25,13 +24,18 @@
   
   <!--Container for search bar-->
   <div class="flex justify-center my-24 ">
-    <form id='userForm' class="flex border border-gray-200 rounded-full p-4 outline-none ">
-      <input id='userEntry' type="text" name="search" class="w-full outline-none bg-transparent" placeholder="Enter a city..">
+    <form id='userForm' value=' ' class="flex border border-gray-200 rounded-full p-4 outline-none ">
+      <input id='userEntry' type="text" name="search" class="w-full outline-none bg-transparent" placeholder="Enter a city.."/>
     <button id='submitButton'
         class="material-icons outline-none transition duration-500 ease-in-out transform hover:scale-150">search</i>
     </button>
     </form>
   </div>
+
+  <!--cpagan===> no results modal, switch to tailwind-->
+ 
+
+<!--Events Container-->
 
   <div class="flex flex-wrap -mx-2 mb-8">
 
@@ -46,8 +50,7 @@
 
   <div class="w-1/2 lg:w-1/2 px-2" id="result">
       <div class="relative pb-2/3 ml-8">
-        <!--the map gets put here, will work on adding more interactive features-->
-        <!--if someone could work to resize that wiil be awesome!!!-->
+        <!--map id='map', we could work on resizing here-->
         <p class="absolute h-full w-full object-cover" id="map">
           </p>
         </div>
@@ -57,5 +60,17 @@
  
   
 <script src="./assets/js/script.js"></script>
+<!--cpagan===> adding auto fill search bar-->
+<!--cpagan===> see references here: https://www.youtube.com/watch?v=Rpzp0yCAmq4, https://developers.google.com/maps/documentation/javascript/places -->
+<script>
+  function activatePlacesSearch()
+  {
+    var input = document.getElementById('userEntry');
+    var autoComplete = new google.maps.places.Autocomplete(input);
+  }
+</script>
+<script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCsJQ60wSV_KrFQOVPDdvV_7HRwcqRJMhY&libraries=places&callback=activatePlacesSearch">
+</script>
 </body>
 </html>
