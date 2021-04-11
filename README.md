@@ -19,7 +19,7 @@ Ina: Google Maps API, Javascript, Map Features
 
 
 
-Christina: TicketMaster API, Javascript, Random Event Feature
+Christina: TicketMaster API data, Javascript, Random Event Feature, Local Storage, User Validation for search
 
 ![Screenshot of IAMBORED](/assets/images/iambored-home.png)
 
