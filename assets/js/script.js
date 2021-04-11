@@ -184,7 +184,9 @@ function getIframe(lat, lon) {
     console.log(lat,lon);
 	var url = 'https://www.google.com/maps/embed/v1/view?key=AIzaSyA3_evQJhPJ4tmHpozf_Q1eqxhjLmTdTiE&center='+lat+','+lon+'&zoom=18&maptype=satellite';
     result.innerHTML = '<iframe id="event_iframe" title="iframe" width="450" height="300" src="'+url+'"></iframe>';
-	result.setAttribute('class', 'border border-gray-200 rounded-full p-4 outline-none');
+	//updated for I WILL GO btn Map pop up -Landon
+	result.setAttribute('class', 'rounded-lg bg-gray-50 p-4 outline-none');
+}
 }
 
 
