@@ -187,7 +187,7 @@ function getIframe(lat, lon) {
 	//updated for I WILL GO btn Map pop up -Landon
 	result.setAttribute('class', 'rounded-lg bg-gray-50 p-4 outline-none');
 }
-}
+
 
 
     //cpagan==> this is for COVID messages, either cancellation of events, or health check messages
