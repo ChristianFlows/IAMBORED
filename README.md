@@ -25,4 +25,6 @@ After typing city and state in search
 ![Screenshot of IAMBORED](/assets/images/iambored-eventsearch.png)
 
 After choosing an event it will provide more information
-![Screenshot of IAMBORED](/assets/images/iambored-eventinfo.png)
+![Screenshot of IAMBORED](/assets/images/iambored-eventresult1.png)
+
+![Screenshot of IAMBORED](/assets/images/iambored-eventresult2.png)
