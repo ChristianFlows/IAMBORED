@@ -23,7 +23,6 @@ var eventLocator = function(userCity, userState) {
             if(eventResponse.page.totalElements > 0)
             {
                 //cpagan-->random number picked for TM api array
-                eventType.remove();
                 randomEvent(eventResponse);
                 console.log(eventResponse);
 
