@@ -23,9 +23,10 @@
 
   
   <!--Container for search bar-->
-  <div class="flex justify-center my-24 ">
+  <div class="flex justify-center my-24">
     <form id='userForm' value=' ' class="flex border border-gray-200 rounded-full p-4 outline-none ">
-      <input id='userEntry' type="text" name="search" class="w-full outline-none bg-transparent" placeholder="Enter a city.."/>
+      <!--updated search -landon-->
+      <input id='userEntry' type="text" name="search" class="w-full outline-none bg-transparent form-input text-gray-50" placeholder="Enter a city.."/>
     <button id='submitButton'
         class="material-icons outline-none transition duration-500 ease-in-out transform hover:scale-150">search</i>
     </button>
@@ -37,27 +38,26 @@
 
 <!--Events Container-->
 
-  <div class="flex flex-wrap -mx-2 mb-8">
+  <div class="flex flex-wrap justify-center content-evenly -mx-8 -my-16 mb-8">
 
-   <div class="w-1/2 lg:w-1/2 px-2">
-        <div class="relative pb-2/3 ml-16">
+    <div class="w-1/2 lg:w-1/2 px-2 mb-8">
+        <div class="relative pb-2/3">
           <p class="absolute h-full w-full object-cover" id="eventList">
             </p>
         </div>
     </div>
-
-    
-
-  <div class="w-1/2 lg:w-1/2 px-2" id="result">
-      <div class="relative pb-2/3 ml-8">
-        <!--map id='map', we could work on resizing here-->
-        <p class="absolute h-full w-full object-cover" id="map">
-          </p>
-        </div>
-      </div>
-
   </div>
- 
+  
+  <div class="flex flex-wrap justify-center content-evenly -mx-8 -my-16 mt-6 mb-8">
+    
+    <div class="w-1/2 lg:w-1/2 px-2 mr-16" id="result">
+      <div class="relative pb-2/3">
+        <p class="absolute h-full w-full object-scale-down" id="map">
+          </p>
+      </div>
+  </div>
+
+  
   
 <script src="./assets/js/script.js"></script>
 <!--cpagan===> adding auto fill search bar-->
