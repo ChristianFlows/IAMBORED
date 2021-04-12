@@ -22,7 +22,7 @@ Christina Pagan (user:cpagan415): TicketMaster API data, Javascript, Random Even
 ![Screenshot of IAMBORED](/assets/images/iambored-home.png)
 
 After typing city and state in search
-![Screenshot of IAMBORED](/assets/images/iambored-eventsearch.png)
+![Screenshot of IAMBORED](assets/images/iambored-eventsearch.png)
 
 After choosing an event it will provide more information
 ![Screenshot of IAMBORED](/assets/images/iambored-eventresult1.png)
